@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeGym</title>
+</head>
+<body>
+    <label class="switch" >
+        <input type="checkbox" id='good' onclick="control_toggle('good')">
+        <span class="slider round"></span>
+        <h id="text">GOOD</h>
+    </label>
+
+<br><br>
+
+    <label class="switch1" >
+        <input type="checkbox" id= 'cheap' onclick="control_toggle('cheap')" >
+        <span class="slider1 round"></span>
+        <h id="text">CHEAP</h>
+    </label>
+<br><br>
+
+    <label class="switch2"  >
+        <input type="checkbox" id="fast" onclick="control_toggle('fast')">
+        <span class="slider2 round"></span>
+        <h id="text">FAST</h>
+    </label>
+<br><br>
+<style>
+    #text {
+        position: absolute;
+        margin-left: 90px;
+    }
+
+    /*setup khung cho toggle switch*/
+    .switch1{
+        position: absolute;
+        display: inline-block;
+        width: 60px;
+        height: 20px;
+    }
+    /*setup thuộc tính khung toggle switch*/
+    .slider1{
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #cccccc;
+         -webkit-transition: .4s;
+        transition: .4s;
+    }
+    /*thêm con cuộn vào trong khung toggle switch */
+
+    .slider1:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: -2px; /*Chỉnh con trỏ sang trái-phải khi được check*/
+        bottom: -4.05px; /*chỉnh con trỏ lên xuống khi được check*/
+        background-color: #000000;
+         -webkit-transition: .4s;
+        transition: .4s;
+
+    }
+
+
+    /*Xét màu cho khung toggle switch*/
+    input:checked + .slider1 {
+        background-color: #0409f3;
+
+    }
+    input:checked + .slider1:before {
+         -webkit-transform: translateX(26px);
+         -ms-transform: translateX(26px);
+        transform: translateX(26px);
+        background-color: #6a50f3;
+        left: 12px;
+    }
+    /*Bo tròn khung*/
+    .slider1.round {
+        border-radius: 34px;
+    }
+    /*Bo tròn cuộn slide(trong)*/
+    .slider1.round:before {
+        border-radius: 50%;
+    }
+
+
+    /*setup khung cho toggle switch*/
+    .switch{
+        position: absolute;
+        display: inline-block;
+        width: 60px;
+        height: 20px;
+    }
+    /*setup thuộc tính khung toggle switch*/
+    .slider{
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #cccccc;
+         -webkit-transition: .4s;
+        transition: .4s;
+    }
+    /*thêm con cuộn vào trong khung toggle switch */
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: -2px; /*Chỉnh con trỏ sang trái-phải khi được check*/
+        bottom: -4.05px; /*chỉnh con trỏ lên xuống khi được check*/
+        background-color: #000000;
+         -webkit-transition: .4s;
+        transition: .4s;
+
+    }
+
+
+    /*Xét màu cho khung toggle switch*/
+    input:checked + .slider {
+        background-color: #66f36c;
+
+    }
+    input:checked + .slider:before {
+         -webkit-transform: translateX(26px);
+         -ms-transform: translateX(26px);
+        transform: translateX(26px);
+        background-color: #03bb0e;
+        left: 12px;
+    }
+    /*Bo tròn khung*/
+    .slider.round {
+        border-radius: 34px;
+    }
+    /*Bo tròn cuộn slide(trong)*/
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+
+
+
+    /*setup khung cho toggle switch*/
+    .switch2{
+        position: absolute;
+        display: inline-block;
+        width: 60px;
+        height: 20px;
+    }
+    /*setup thuộc tính khung toggle switch*/
+    .slider2{
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #cccccc;
+         -webkit-transition: .4s;
+        transition: .4s;
+    }
+    /*thêm con cuộn vào trong khung toggle switch */
+    .slider2:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: -2px; /*Chỉnh con trỏ sang trái-phải khi được check*/
+        bottom: -4.05px; /*chỉnh con trỏ lên xuống khi được check*/
+        background-color: #000000;
+         -webkit-transition: .4s;
+        transition: .4s;
+
+    }
+
+
+    /*Xét màu cho khung toggle switch*/
+    input:checked + .slider2 {
+        background-color: #f316b0;
+
+    }
+    input:checked + .slider2:before {
+         -webkit-transform: translateX(26px);
+         -ms-transform: translateX(26px);
+        transform: translateX(26px);
+        background-color: #f37777;
+        left: 12px;
+    }
+    /*Bo tròn khung*/
+    .slider2.round {
+        border-radius: 34px;
+    }
+    /*Bo tròn cuộn slide(trong)*/
+    .slider2.round:before {
+        border-radius: 50%;
+    }
+</style>
+<script>
+    function control_toggle(element) {
+        var cbGood = document.getElementById("good")
+        var cbCheap = document.getElementById("cheap");
+        var cbFast = document.getElementById("fast");
+        var checkCbGood = cbGood.checked;
+        var checkCbCheap = cbCheap.checked;
+        var checkcbFast = cbFast.checked;
+        switch (element) {
+            case 'good' :
+                if (checkCbGood) {
+                    if (checkCbCheap) {
+                        if (checkcbFast) {
+                            cbFast.checked = false;
+                        }
+                    }
+                }
+                break;
+            case 'fast':
+                if (checkcbFast) {
+                    if (checkCbGood) {
+                        if (checkCbCheap) {
+                            cbCheap.checked = false;
+                        }
+                    }
+                }
+                break;
+            case 'cheap':
+                if (checkCbGood){
+                    if (checkcbFast) {
+                        if (checkCbCheap) {
+                            cbGood.checked = false;
+                        }
+                    }
+                }
+        }
+    }
+
+</script>
+
+</body>
+</html>
